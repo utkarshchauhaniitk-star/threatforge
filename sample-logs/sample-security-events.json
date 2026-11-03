@@ -1,0 +1,68 @@
+[
+  {
+    "id": "SEC-EVT-101",
+    "timestamp": "2026-11-03T09:00:15Z",
+    "event_type": "authorization",
+    "source_ip": "192.0.2.15",
+    "destination_ip": "10.0.0.20",
+    "username": "dev_alex",
+    "action": "privilege_escalation",
+    "status": "failure",
+    "severity": "critical",
+    "description": "Unauthorized sudo execution: user dev_alex attempted 'cat /etc/shadow'",
+    "source": "auditd",
+    "command": "/bin/cat /etc/shadow"
+  },
+  {
+    "id": "SEC-EVT-102",
+    "timestamp": "2026-11-03T09:15:00Z",
+    "event_type": "authentication",
+    "source_ip": "203.0.113.88",
+    "destination_ip": "10.0.0.10",
+    "username": "admin",
+    "action": "login",
+    "status": "failure",
+    "severity": "medium",
+    "description": "Authentication failure: invalid credentials for admin",
+    "source": "azure_ad"
+  },
+  {
+    "id": "SEC-EVT-103",
+    "timestamp": "2026-11-03T09:17:20Z",
+    "event_type": "authentication",
+    "source_ip": "203.0.113.88",
+    "destination_ip": "10.0.0.10",
+    "username": "finance",
+    "action": "login",
+    "status": "failure",
+    "severity": "medium",
+    "description": "Authentication failure: invalid credentials for finance",
+    "source": "azure_ad"
+  },
+  {
+    "id": "SEC-EVT-104",
+    "timestamp": "2026-11-03T09:19:45Z",
+    "event_type": "authentication",
+    "source_ip": "203.0.113.88",
+    "destination_ip": "10.0.0.10",
+    "username": "devops",
+    "action": "login",
+    "status": "failure",
+    "severity": "medium",
+    "description": "Authentication failure: invalid credentials for devops",
+    "source": "azure_ad"
+  },
+  {
+    "id": "SEC-EVT-105",
+    "timestamp": "2026-11-03T09:25:30Z",
+    "event_type": "system",
+    "source_ip": "10.0.2.45",
+    "destination_ip": "10.0.0.50",
+    "username": "charlie.wong",
+    "action": "file_access",
+    "status": "success",
+    "severity": "low",
+    "description": "User accessed git repository threatforge-core.git",
+    "source": "gitlab_audit"
+  }
+]
