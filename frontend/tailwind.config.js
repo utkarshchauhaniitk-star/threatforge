@@ -9,20 +9,19 @@ export default {
     extend: {
       colors: {
         forge: {
-          bg: '#080C14',
-          card: '#0F172A',
-          cardHover: '#131F37',
-          surface: '#1E293B',
-          border: '#1E293B',
-          borderLight: '#334155',
-          accent: '#06B6D4',
-          accentGlow: 'rgba(6, 182, 212, 0.15)',
-          emerald: '#10B981',
-          emeraldGlow: 'rgba(16, 185, 129, 0.15)',
-          amber: '#F59E0B',
-          rose: '#EF4444',
-          muted: '#94A3B8',
-          text: '#F1F5F9',
+          bg: '#070A0F',          // Deepest midnight void
+          card: '#0D1322',        // Tactical dark panel
+          cardHover: '#121B2F',   // Hover elevated panel
+          surface: '#152037',     // Interactive surface
+          border: '#1A263D',      // Muted border
+          borderLight: '#263756', // Active border
+          accent: '#38BDF8',      // Cyber Sky / Cyan
+          accentBlue: '#2563EB',  // Electric Cobalt
+          emerald: '#10B981',     // Sentinel Emerald
+          amber: '#F59E0B',       // Warning Amber
+          rose: '#F43F5E',        // Threat Crimson
+          muted: '#8B9BB4',       // Soft slate text
+          text: '#F8FAFC',        // Crisp white text
         }
       },
       fontFamily: {

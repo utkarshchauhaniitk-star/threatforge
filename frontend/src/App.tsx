@@ -11,7 +11,7 @@ import { SettingsPage } from './pages/SettingsPage';
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<DashboardPage />} />

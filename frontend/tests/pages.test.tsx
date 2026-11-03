@@ -75,7 +75,7 @@ describe('Settings Page & Detection Rules', () => {
 
   it('renders detection rules and system health diagnostics', async () => {
     render(
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <SettingsPage />
       </BrowserRouter>
     );

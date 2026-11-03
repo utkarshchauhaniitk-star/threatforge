@@ -56,7 +56,7 @@ describe('Common UI Components', () => {
 
   it('renders Sidebar navigation links', () => {
     render(
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Sidebar isOpen={true} onCloseMobile={() => {}} />
       </BrowserRouter>
     );

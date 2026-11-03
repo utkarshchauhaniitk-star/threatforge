@@ -42,29 +42,29 @@ export const Modal: React.FC<ModalProps> = ({
   }[maxWidth];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-150">
       <div
-        className={`w-full ${widthClasses} max-h-[90vh] flex flex-col rounded-xl bg-slate-900 border border-slate-700/80 shadow-2xl overflow-hidden`}
+        className={`w-full ${widthClasses} max-h-[90vh] flex flex-col rounded-2xl bg-[#0B111E] border border-slate-700/80 shadow-2xl shadow-blue-950/40 overflow-hidden`}
         role="dialog"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/40">
-          <h3 className="text-base font-semibold text-slate-100 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800/80 bg-slate-950/60">
+          <h3 className="text-sm font-bold text-slate-100 flex items-center gap-2 font-mono">
+            <span className="w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]"></span>
             {title}
           </h3>
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-100 rounded-lg hover:bg-slate-800 transition"
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-all duration-150 cursor-pointer active:scale-95"
             aria-label="Close modal"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="px-6 py-4 overflow-y-auto flex-1">{children}</div>
+        <div className="px-6 py-5 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );

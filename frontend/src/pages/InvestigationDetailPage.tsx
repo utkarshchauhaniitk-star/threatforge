@@ -7,13 +7,8 @@ import {
   MessageSquare,
   Send,
   Save,
-  CheckCircle,
   AlertTriangle,
   FileText,
-  Clock,
-  User,
-  Shield,
-  Layers,
 } from 'lucide-react';
 import { api } from '../services/api';
 import { Investigation, InvestigationStatus, Severity } from '../types';
@@ -107,11 +102,11 @@ export const InvestigationDetailPage: React.FC = () => {
 
   if (!inv) {
     return (
-      <div className="p-8 text-center bg-slate-900 rounded-xl border border-slate-800">
+      <div className="p-8 text-center bg-[#0B111E] rounded-2xl border border-slate-800 shadow-xl">
         <AlertTriangle className="w-8 h-8 text-rose-400 mx-auto mb-2" />
-        <h3 className="text-base font-semibold text-slate-200">Investigation Not Found</h3>
+        <h3 className="text-base font-bold text-slate-200 font-mono">Investigation Not Found</h3>
         <p className="text-xs text-slate-400 mt-1">The requested case ID does not exist.</p>
-        <Link to="/investigations" className="mt-4 inline-block text-xs text-cyan-400 hover:underline">
+        <Link to="/investigations" className="mt-4 inline-block text-xs text-sky-400 hover:underline font-semibold cursor-pointer">
           Return to investigations list
         </Link>
       </div>
@@ -125,14 +120,14 @@ export const InvestigationDetailPage: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => navigate('/investigations')}
-            className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800 transition"
+            className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800 transition cursor-pointer active:scale-95"
             aria-label="Back to investigations"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-semibold text-cyan-400">{inv.id}</span>
+              <span className="font-mono text-xs font-bold text-sky-400">{inv.id}</span>
               <Badge label={inv.status} variant="status" />
               <Badge label={inv.priority} variant="severity" />
             </div>
@@ -143,9 +138,9 @@ export const InvestigationDetailPage: React.FC = () => {
         <div className="flex items-center gap-2">
           <Link
             to={`/reports?investigation_id=${inv.id}`}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-900 hover:bg-slate-800 text-cyan-400 border border-cyan-500/30 transition"
+            className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition cursor-pointer active:scale-[0.98] shadow-sm"
           >
-            <FileText className="w-3.5 h-3.5" />
+            <FileText className="w-4 h-4 text-sky-400" />
             <span>Generate Incident Report</span>
           </Link>
         </div>
@@ -156,44 +151,44 @@ export const InvestigationDetailPage: React.FC = () => {
         {/* Left Column (2 Cols wide) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Metadata Card */}
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <h3 className="text-sm font-semibold text-slate-200 flex items-center gap-2">
-              <FolderKanban className="w-4 h-4 text-cyan-400" /> Case Details & Scope
+          <div className="p-5 rounded-2xl bg-[#0B111E] border border-slate-800/80 space-y-4 shadow-xl">
+            <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2 font-mono">
+              <FolderKanban className="w-4 h-4 text-sky-400" /> Case Details & Scope
             </h3>
-            <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/40 p-3 rounded-lg border border-slate-800/80">
+            <p className="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80">
               {inv.description}
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono pt-2">
               <div>
-                <span className="text-slate-500 block text-[10px]">ASSIGNED ANALYST</span>
-                <span className="text-slate-200 font-sans">{inv.assigned_to}</span>
+                <span className="text-slate-500 block text-[10px] uppercase">ASSIGNED ANALYST</span>
+                <span className="text-slate-200 font-sans font-semibold">{inv.assigned_to}</span>
               </div>
               <div>
-                <span className="text-slate-500 block text-[10px]">OPENED AT</span>
+                <span className="text-slate-500 block text-[10px] uppercase">OPENED AT</span>
                 <span className="text-slate-400">{new Date(inv.created_at).toLocaleDateString()}</span>
               </div>
               <div>
-                <span className="text-slate-500 block text-[10px]">LAST UPDATED</span>
+                <span className="text-slate-500 block text-[10px] uppercase">LAST UPDATED</span>
                 <span className="text-slate-400">{new Date(inv.updated_at).toLocaleDateString()}</span>
               </div>
               <div>
-                <span className="text-slate-500 block text-[10px]">TOTAL NOTES</span>
-                <span className="text-cyan-400">{inv.notes.length} entries</span>
+                <span className="text-slate-500 block text-[10px] uppercase">TOTAL NOTES</span>
+                <span className="text-sky-400 font-bold">{inv.notes.length} entries</span>
               </div>
             </div>
           </div>
 
           {/* Status & Priority Controls */}
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <h3 className="text-sm font-semibold text-slate-200">Investigation Status & Triage</h3>
+          <div className="p-5 rounded-2xl bg-[#0B111E] border border-slate-800/80 space-y-4 shadow-xl">
+            <h3 className="text-sm font-bold text-slate-200 font-mono">Investigation Status & Triage</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-slate-300 mb-1">Investigation Status</label>
                 <select
                   value={status}
                   onChange={(e) => setStatus(e.target.value as InvestigationStatus)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono cursor-pointer"
                 >
                   <option value="Open">Open</option>
                   <option value="In Progress">In Progress</option>
@@ -206,7 +201,7 @@ export const InvestigationDetailPage: React.FC = () => {
                 <select
                   value={priority}
                   onChange={(e) => setPriority(e.target.value as Severity)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono cursor-pointer"
                 >
                   <option value="Critical">Critical</option>
                   <option value="High">High</option>
@@ -226,7 +221,7 @@ export const InvestigationDetailPage: React.FC = () => {
                 value={findings}
                 onChange={(e) => setFindings(e.target.value)}
                 placeholder="Record forensic conclusions, verified indicators of compromise (IOCs), and containment measures taken..."
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-cyan-500 leading-relaxed font-sans"
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-sky-500 leading-relaxed font-sans"
               />
             </div>
 
@@ -234,7 +229,7 @@ export const InvestigationDetailPage: React.FC = () => {
               <button
                 onClick={handleSaveInvestigation}
                 disabled={isSaving}
-                className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 disabled:opacity-40 transition shadow-md shadow-cyan-500/20"
+                className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white disabled:opacity-40 transition-all cursor-pointer disabled:cursor-not-allowed shadow-md shadow-blue-500/20 active:scale-[0.98]"
               >
                 <Save className="w-3.5 h-3.5" />
                 {isSaving ? 'Saving Changes...' : 'Save Findings & Status'}
@@ -245,9 +240,9 @@ export const InvestigationDetailPage: React.FC = () => {
 
         {/* Right Column: Case Timeline & Notes Thread */}
         <div className="space-y-6">
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col h-full max-h-[750px]">
-            <h3 className="text-sm font-semibold text-slate-200 flex items-center gap-2 mb-4">
-              <MessageSquare className="w-4 h-4 text-cyan-400" /> Analyst Notes & Chronology
+          <div className="p-5 rounded-2xl bg-[#0B111E] border border-slate-800/80 flex flex-col h-full max-h-[750px] shadow-xl">
+            <h3 className="text-sm font-bold text-slate-200 flex items-center gap-2 mb-4 font-mono">
+              <MessageSquare className="w-4 h-4 text-sky-400" /> Analyst Notes & Chronology
             </h3>
 
             {/* Notes List */}
@@ -260,13 +255,13 @@ export const InvestigationDetailPage: React.FC = () => {
                 inv.notes.map((note) => (
                   <div
                     key={note.id}
-                    className="p-3.5 rounded-lg bg-slate-950/70 border border-slate-800/80 space-y-1 text-xs"
+                    className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80 space-y-1.5 text-xs"
                   >
                     <div className="flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                      <span className="font-semibold text-cyan-300 font-sans">{note.author}</span>
+                      <span className="font-bold text-sky-300 font-sans">{note.author}</span>
                       <span>{new Date(note.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                     </div>
-                    <p className="text-slate-300 leading-relaxed">{note.content}</p>
+                    <p className="text-slate-300 leading-relaxed font-sans">{note.content}</p>
                   </div>
                 ))
               )}
@@ -280,7 +275,7 @@ export const InvestigationDetailPage: React.FC = () => {
                   value={newNoteAuthor}
                   onChange={(e) => setNewNoteAuthor(e.target.value)}
                   placeholder="Author"
-                  className="w-1/3 px-2 py-1.5 bg-slate-950 border border-slate-800 rounded text-xs text-slate-200 focus:outline-none focus:border-cyan-500 font-mono"
+                  className="w-1/3 px-2.5 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 focus:outline-none focus:border-sky-500 font-mono"
                 />
                 <input
                   type="text"
@@ -288,12 +283,12 @@ export const InvestigationDetailPage: React.FC = () => {
                   value={newNoteContent}
                   onChange={(e) => setNewNoteContent(e.target.value)}
                   placeholder="Add investigation update..."
-                  className="flex-1 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded text-xs text-slate-100 focus:outline-none focus:border-cyan-500 font-sans"
+                  className="flex-1 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-sky-500 font-sans"
                 />
                 <button
                   type="submit"
                   disabled={isSubmittingNote || !newNoteContent.trim()}
-                  className="p-1.5 rounded bg-cyan-500 hover:bg-cyan-400 text-slate-950 disabled:opacity-40 transition"
+                  className="p-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white disabled:opacity-40 transition-all cursor-pointer disabled:cursor-not-allowed shadow-sm active:scale-95"
                   title="Send Note"
                 >
                   <Send className="w-4 h-4" />
