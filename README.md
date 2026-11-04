@@ -1,5 +1,8 @@
 # ThreatForge — Security Monitoring & Threat Detection Platform
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-threatforge.vercel.app-10B981?style=flat&logo=vercel)](https://threatforge.vercel.app)
+[![CI Pipeline](https://github.com/utkarshchauhaniitk-star/threatforge/actions/workflows/ci.yml/badge.svg)](https://github.com/utkarshchauhaniitk-star/threatforge/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI_0.111-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/Frontend-React_18_%2B_Vite-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/Language-TypeScript_5.7-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
