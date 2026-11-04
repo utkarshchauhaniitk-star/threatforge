@@ -88,14 +88,45 @@ Deterministic detection rules mapped to the MITRE ATT&CK framework:
 
 ## 4. Application Screenshots
 
-| View | Description | Preview |
-| :--- | :--- | :--- |
-| **SOC Overview Dashboard** | Real-time security telemetry, active threat alerts, Recharts event volume timeline, and top suspicious IP rankings. | `docs/screenshots/dashboard.png` |
-| **Security Events Table** | Normalized log telemetry with full-text search, multi-factor filters (Severity, Event Type, Status), and CSV/JSON upload modal. | `docs/screenshots/events.png` |
-| **Threat Alerts & Evidence** | MITRE ATT&CK correlated detections with sliding-window indicator details, status dropdowns, and case escalation. | `docs/screenshots/alerts.png` |
-| **Investigation Workspace** | Case details, status workflow, root-cause findings editor, and real-time analyst notes chronology. | `docs/screenshots/investigations.png` |
-| **Incident Audit Report** | Executive summary, triggered detection rules, correlated alerts, forensic samples, and one-click JSON/CSV downloads. | `docs/screenshots/reports.png` |
-| **Detection Rules & Settings** | Policy management table with MITRE mapping, rule parameter adjustments, and platform health telemetry. | `docs/screenshots/settings.png` |
+### SOC Operations Center (Overview Dashboard)
+> Real-time security telemetry, active threat alerts, Recharts event volume timeline, and top suspicious IP rankings.
+
+![SOC Operations Center](docs/screenshots/dashboard.png)
+
+---
+
+### Security Events & Telemetry Ingestion
+> Normalized log telemetry with full-text search, multi-factor filters (Severity, Event Type, Status), and CSV/JSON upload modal.
+
+![Security Events](docs/screenshots/events.png)
+
+---
+
+### Threat Alerts & Correlated Evidence
+> MITRE ATT&CK correlated detections with sliding-window indicator details, status dropdowns, and case escalation.
+
+![Threat Alerts](docs/screenshots/alerts.png)
+
+---
+
+### Incident Investigation Workspace
+> Case details, status workflow, root-cause findings editor, and real-time analyst notes chronology.
+
+![Incident Investigation Workspace](docs/screenshots/investigations.png)
+
+---
+
+### Incident Audit Report
+> Executive summary, triggered detection rules, correlated alerts, forensic samples, and one-click JSON/CSV downloads.
+
+![Incident Audit Report](docs/screenshots/reports.png)
+
+---
+
+### Detection Policies & Platform Diagnostics
+> Policy management table with MITRE mapping, rule parameter adjustments, and platform health telemetry.
+
+![Detection Policies](docs/screenshots/settings.png)
 
 ---
 
