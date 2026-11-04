@@ -7,6 +7,16 @@
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Tests](https://img.shields.io/badge/Tests-Pytest_%2B_Vitest_Passing-10B981?style=flat&logo=pytest&logoColor=white)](https://docs.pytest.org/)
 
+## 🌐 Live Demo & Deployment Status
+
+| Component | Target Environment | Blueprint / Setup |
+| :--- | :--- | :--- |
+| **Unified Web Service** | Render (FastAPI + React SPA) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/utkarshchauhaniitk-star/threatforge) <br/> Pre-configured via `render.yaml` blueprint |
+| **Frontend Client** | Vercel | [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/utkarshchauhaniitk-star/threatforge&root-directory=frontend) <br/> Pre-configured via `frontend/vercel.json` |
+| **Local Interactive SOC** | Localhost (`127.0.0.1:5173`) | Instant full-stack startup with seeded synthetic attack telemetry |
+
+> 📌 **Public Deployment Setup**: ThreatForge includes full Infrastructure-as-Code blueprints (`render.yaml` and `frontend/vercel.json`). Click either 1-click button above to launch an instant live cloud instance, or follow the step-by-step [Production Deployment Guide](docs/deployment.md).
+
 **ThreatForge** is a full-stack cybersecurity monitoring, threat detection, and incident response platform designed for security operations center (SOC) analysts, security engineers, and cybersecurity learners. 
 
 It ingests multi-source security telemetry, normalizes heterogeneous log structures into a standardized schema, executes explainable rule-based threat correlation mapped to the **MITRE ATT&CK® Framework**, coordinates forensic investigation workflows, and compiles audit-ready incident reports.

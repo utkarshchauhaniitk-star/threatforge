@@ -1,7 +1,9 @@
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
-from fastapi import FastAPI, Request, status
-from fastapi.responses import JSONResponse
+from pathlib import Path
+from fastapi import FastAPI, Request, HTTPException, status
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
@@ -91,3 +93,19 @@ app.include_router(reports_router, prefix="/api")
 app.include_router(dashboard_router, prefix="/api")
 app.include_router(rules_router, prefix="/api")
 app.include_router(demo_router, prefix="/api")
+
+# Mount React Frontend SPA (if built for unified single-service deployment)
+ROOT_DIR = Path(__file__).resolve().parent.parent.parent
+FRONTEND_DIST_DIR = ROOT_DIR / "frontend" / "dist"
+
+if FRONTEND_DIST_DIR.exists() and (FRONTEND_DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIST_DIR / "assets")), name="assets")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_spa(full_path: str):
+        if full_path.startswith("api") or full_path.startswith("docs") or full_path.startswith("redoc") or full_path.startswith("openapi.json"):
+            raise HTTPException(status_code=404, detail="Not Found")
+        file_path = FRONTEND_DIST_DIR / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+        return FileResponse(FRONTEND_DIST_DIR / "index.html")
