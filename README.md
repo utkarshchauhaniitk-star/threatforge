@@ -172,8 +172,8 @@ Detailed technical architecture documentation is available in [docs/architecture
 
 ### 1. Clone Repository & Setup Environment
 ```bash
-git clone <your-repository-url>
-cd ThreatForge
+git clone https://github.com/utkarshchauhaniitk-star/threatforge.git
+cd threatforge
 
 # Copy environment configuration
 cp .env.example .env
