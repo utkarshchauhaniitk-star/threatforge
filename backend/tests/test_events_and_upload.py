@@ -76,3 +76,29 @@ def test_upload_empty_file_rejected(client):
 def test_get_event_not_found(client):
     response = client.get("/api/events/nonexistent-id")
     assert response.status_code == 404
+
+
+def test_upload_partial_valid_json_succeeds(client):
+    mixed_payload = [
+        {
+            "timestamp": "2026-11-03T14:00:00Z",
+            "event_type": "authentication",
+            "source_ip": "198.51.100.99",
+            "username": "charlie",
+            "action": "login",
+            "status": "success",
+            "severity": "low",
+            "description": "Valid event in mixed upload",
+        },
+        "this is an invalid record that is not an object",
+    ]
+    files = {"file": ("mixed.json", io.BytesIO(json.dumps(mixed_payload).encode("utf-8")), "application/json")}
+    response = client.post("/api/events/upload", files=files)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["success"] is True
+    assert data["total_records"] == 2
+    assert data["imported_records"] == 1
+    assert data["failed_records"] == 1
+    assert len(data["errors"]) >= 1
+
